@@ -20,4 +20,10 @@
       <PackageReference Include="MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Models\Models.csproj" />
+      <ProjectReference Include="..\..\Utility\Utility.csproj" />
+      <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    </ItemGroup>
+
 </Project>

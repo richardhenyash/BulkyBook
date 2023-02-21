@@ -1,5 +1,5 @@
-using BulkyBookWeb.Data;
-using BulkyBookWeb.Models;
+using DataAccess;
+using Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,5 @@
-@model Category
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Models.Category
 <form method="post" asp-action="DeletePost">
     <input asp-for="Id" hidden>
     <div class="border p-3 mt-4">

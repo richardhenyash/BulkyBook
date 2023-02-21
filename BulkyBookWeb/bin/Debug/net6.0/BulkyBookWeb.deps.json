@@ -34,11 +34,14 @@
     ".NETCoreApp,Version=v6.0": {
       "BulkyBookWeb/1.0.0": {
         "dependencies": {
+          "DataAccess": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.1",
           "Microsoft.EntityFrameworkCore.Design": "7.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.1",
+          "Models": "1.0.0",
           "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.0",
+          "Utility": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "6.0.0.0",
@@ -1662,6 +1665,46 @@
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.0.20.51904"
           }
+        }
+      },
+      "DataAccess/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
+          "Models": "1.0.0",
+          "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.0"
+        },
+        "runtime": {
+          "DataAccess.dll": {}
+        },
+        "compile": {
+          "DataAccess.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
+          "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.0"
+        },
+        "runtime": {
+          "Models.dll": {}
+        },
+        "compile": {
+          "Models.dll": {}
+        }
+      },
+      "Utility/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
+          "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.0"
+        },
+        "runtime": {
+          "Utility.dll": {}
+        },
+        "compile": {
+          "Utility.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/6.0.0.0": {
@@ -4089,6 +4132,21 @@
       "sha512": "sha512-c1ho9WU9ZxMZawML+ssPKZfdnrg/OjR3pe0m9v8230z3acqphwvPJqzAkH54xRYm5ntZHGG1EPP3sux9H3qSPg==",
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
+    },
+    "DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/6.0.0.0": {
       "type": "referenceassembly",
