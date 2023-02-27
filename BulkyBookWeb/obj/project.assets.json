@@ -1544,6 +1544,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.1",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.1",
           "Models": "1.0.0",
           "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.0"
