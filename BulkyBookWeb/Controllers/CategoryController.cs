@@ -1,8 +1,6 @@
 using BulkyBook.DataAccess.Repository.IRepository;
-using DataAccess;
 using Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBookWeb.Controllers;
 
