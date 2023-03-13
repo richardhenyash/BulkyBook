@@ -1,21 +1,22 @@
+using System.Linq.Expressions;
 using BulkyBook.DataAccess.Repository.IRepository;
 using DataAccess;
 using Models;
 
 namespace BulkyBook.DataAccess.Repository;
 
-public class CategoryRepository : Repository<Category>, ICategoryRepository
+public class CoverTypeRepository : Repository<CoverType>, ICoverTypeRepository
 {
     private ApplicationDBContext _db;
     
-    public CategoryRepository(ApplicationDBContext db) : base(db)
+    public CoverTypeRepository(ApplicationDBContext db) : base(db)
     {
         _db = db;
     }
 
-    public void Update(Category obj)
+    public void Update(CoverType obj)
     {
-        _db.Categories.Update(obj);
+        _db.CoverTypes.Update(obj);
     }
 
     public void Save()
