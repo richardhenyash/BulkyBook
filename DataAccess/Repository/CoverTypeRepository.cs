@@ -18,9 +18,4 @@ public class CoverTypeRepository : Repository<CoverType>, ICoverTypeRepository
     {
         _db.CoverTypes.Update(obj);
     }
-
-    public void Save()
-    {
-        _db.SaveChanges();
-    }
 }
