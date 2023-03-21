@@ -46,6 +46,20 @@
             <input asp-for="Price100" class="form-control">
             <span asp-validation-for="Price100" class="text-danger"></span>
         </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId"></label>
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select form-control" option selected>
+                Select Category
+            </select>
+            <span asp-validation-for="Price100" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CoverTypeId"></label>
+            <select asp-for="CoverTypeId" asp-items="@(ViewData["CoverTypeList"] as IEnumerable<SelectListItem>)" class="form-select form-control" option selected>
+                Select Cover Type
+            </select>
+            <span asp-validation-for="Price100" class="text-danger"></span>
+        </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
         <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
     </div>
