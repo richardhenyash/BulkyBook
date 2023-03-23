@@ -46,6 +46,22 @@ public class ProductController : Controller
         return View(productVm);
     }
     
+    //POST
+    // [HttpPost]
+    // [ValidateAntiForgeryToken]
+    // public IActionResult Create(ProductVm obj, IFormFile file)
+    // {
+        // if (ModelState.IsValid)
+        // {
+        //     _unitOfWork.Product.Add(obj);
+        //     _unitOfWork.Save();
+        //     TempData["success"] = "Product updated successfully";
+        //     return RedirectToAction("Index");
+        // }
+        //
+        // return View(obj);
+    // }
+    
     public IActionResult Index()
     {
         IEnumerable<Product> objProductList = _unitOfWork.Product.GetAll();
