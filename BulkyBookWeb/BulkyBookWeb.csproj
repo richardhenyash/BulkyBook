@@ -45,4 +45,8 @@
       <AdditionalFiles Include="Areas\Customer\Views\Home\Privacy.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\images\products" />
+    </ItemGroup>
+
 </Project>
