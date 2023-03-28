@@ -18,7 +18,7 @@ public class CategoryController : Controller
 
     public IActionResult Index()
     {
-        IEnumerable<Category> objCategoryList = _unitOfWork.Category.GetAll();
+        IEnumerable<Category> objCategoryList = _unitOfWork.Category.GetAll(null);
         return View(objCategoryList);
     }
     

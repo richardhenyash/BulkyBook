@@ -2,6 +2,7 @@ using BulkyBook.DataAccess.Repository.IRepository;
 using Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Query;
 using Models.ViewModels;
 
 namespace BulkyBookWeb.Controllers;
@@ -25,12 +26,12 @@ public class ProductController : Controller
         ProductVm productVm = new()
         {
             Product = new(),
-            CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
+            CategoryList = _unitOfWork.Category.GetAll(null).Select(i => new SelectListItem
             {
                 Text = i.Name,
                 Value = i.Id.ToString()
             }),
-            CoverTypeList = _unitOfWork.CoverType.GetAll().Select(i => new SelectListItem
+            CoverTypeList = _unitOfWork.CoverType.GetAll(null).Select(i => new SelectListItem
             {
                 Text = i.Name,
                 Value = i.Id.ToString()
@@ -87,7 +88,7 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult GetAll()
     {
-        var productList = _unitOfWork.Product.GetAll();
+        var productList = _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
         return Json(new { data = productList });
     }
     

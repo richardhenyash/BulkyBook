@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using BulkyBook.DataAccess.Repository.IRepository;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
 namespace BulkyBook.DataAccess.Repository;
 
@@ -16,16 +17,31 @@ public class Repository<T> : IRepository<T> where T : class
         this.dbSet = _db.Set<T>();
     }
     
-    public T GetFirstOrDefault(Expression<Func<T, bool>> filter)
+    public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)
     {
         IQueryable<T> query = dbSet;
         query = query.Where(filter);
+        if (includeProperties != null)
+        {
+            foreach (var includeProp in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProp);
+            }
+        }
         return query.FirstOrDefault();
     }
-
-    public IEnumerable<T> GetAll()
+    // includeProp - "Category"
+    // includeProp - "Category,CoverType"
+    public IEnumerable<T> GetAll(string? includeProperties = null)
     {
         IQueryable<T> query = dbSet;
+        if (includeProperties != null)
+        {
+            foreach (var includeProp in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProp);
+            }
+        }
         return query.ToList();
     }
 

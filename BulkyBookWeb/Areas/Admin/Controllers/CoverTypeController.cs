@@ -18,7 +18,7 @@ public class CoverTypeController : Controller
 
     public IActionResult Index()
     {
-        IEnumerable<CoverType> objCoverViewList = _unitOfWork.CoverType.GetAll();
+        IEnumerable<CoverType> objCoverViewList = _unitOfWork.CoverType.GetAll(null);
         return View(objCoverViewList);
     }
     
