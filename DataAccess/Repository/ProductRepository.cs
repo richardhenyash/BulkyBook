@@ -35,6 +35,5 @@ public class ProductRepository : Repository<Product>, IProductRepository
                 objFromDb.ImageUrl = obj.ImageUrl;
             }
         }
-        _db.Products.Update(obj);
     }
 }

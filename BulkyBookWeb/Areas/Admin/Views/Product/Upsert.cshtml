@@ -1,8 +1,9 @@
 @model Models.ViewModels.ProductVm
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden/>
     <div class="border p-3 mt-4 row">
         <div class="row pb-2">
-            <h2 class="text-primary">@(Model.Product.Id!=0?"Update" : "Create") Product</h2>
+            <h2 class="text-primary">@(Model.Product.Id != 0 ? "Update" : "Create") Product</h2>
             <hr>
         </div>
         <div class="text-danger" asp-validation-summary="All"></div>
@@ -51,13 +52,13 @@
             <input type="file" id="uploadBox" name="file" class="form-control">
         </div>
         <div class="mb-3 col-6">
-            <label asp-for="Product.CategoryId">Category</label>
+            <label asp-for="Product.CategoryId"></label>
             <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select form-control" option selected>
             </select>
             <span asp-validation-for="Product.Price100" class="text-danger"></span>
         </div>
         <div class="mb-3 col-6">
-            <label asp-for="Product.CoverTypeId">Cover Type</label>
+            <label asp-for="Product.CoverTypeId"></label>
             <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select form-control" option selected>
             </select>
             <span asp-validation-for="Product.Price100" class="text-danger"></span>
