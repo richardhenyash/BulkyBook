@@ -8,13 +8,13 @@ namespace BulkyBook.DataAccess.Repository;
 
 public class Repository<T> : IRepository<T> where T : class
 {
-    private readonly ApplicationDBContext _db;
+    private readonly ApplicationDbContext _db;
     internal DbSet<T> dbSet;
 
-    public Repository(ApplicationDBContext db)
+    public Repository(ApplicationDbContext db)
     {
         _db = db;
-        this.dbSet = _db.Set<T>();
+        dbSet = _db.Set<T>();
     }
     
     public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)

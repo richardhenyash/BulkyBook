@@ -8,9 +8,9 @@ namespace BulkyBook.DataAccess.Repository;
 
 public class ProductRepository : Repository<Product>, IProductRepository
 {
-    private ApplicationDBContext _db;
+    private ApplicationDbContext _db;
 
-    public ProductRepository(ApplicationDBContext db) : base(db)
+    public ProductRepository(ApplicationDbContext db) : base(db)
     {
         _db = db;
     }
@@ -22,7 +22,8 @@ public class ProductRepository : Repository<Product>, IProductRepository
         {
             objFromDb.Title = obj.Title;
             objFromDb.ISBN = obj.ISBN;
-            objFromDb.Price = obj.Price50;
+            objFromDb.Price = obj.Price;
+            objFromDb.ListPrice = obj.ListPrice;
             objFromDb.Price50 = obj.Price50;
             objFromDb.Price100 = obj.Price100;
             objFromDb.Description = obj.Description;
