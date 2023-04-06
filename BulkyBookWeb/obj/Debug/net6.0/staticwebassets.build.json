@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "adIn3SHUH9FcHGIvqKMvvx/N6NXiIlxtLMGwIlr2Wl4=",
+  "Hash": "O5yG2b5JVtthK51Zp7L6GVSBMxjRZU+24B8oalYJulM=",
   "Source": "BulkyBookWeb",
   "BasePath": "_content/BulkyBookWeb",
   "Mode": "Default",
@@ -136,12 +136,12 @@
       "OriginalItemSpec": "wwwroot/images/.DS_Store"
     },
     {
-      "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/products/90100ca4-c57d-4875-8686-5082a2af7c56.jpeg",
+      "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/products/83cd700e-caad-47f7-bce3-9eb91b5b8d8f.jpeg",
       "SourceId": "BulkyBookWeb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/",
       "BasePath": "_content/BulkyBookWeb",
-      "RelativePath": "images/products/90100ca4-c57d-4875-8686-5082a2af7c56.jpeg",
+      "RelativePath": "images/products/83cd700e-caad-47f7-bce3-9eb91b5b8d8f.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,24 +150,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/products/90100ca4-c57d-4875-8686-5082a2af7c56.jpeg"
-    },
-    {
-      "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/products/949532d9-a445-4d29-8249-f4d786ca3b87.jpeg",
-      "SourceId": "BulkyBookWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/",
-      "BasePath": "_content/BulkyBookWeb",
-      "RelativePath": "images/products/949532d9-a445-4d29-8249-f4d786ca3b87.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/products/949532d9-a445-4d29-8249-f4d786ca3b87.jpeg"
+      "OriginalItemSpec": "wwwroot/images/products/83cd700e-caad-47f7-bce3-9eb91b5b8d8f.jpeg"
     },
     {
       "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/js/product.js",

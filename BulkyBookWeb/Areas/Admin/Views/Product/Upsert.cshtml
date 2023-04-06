@@ -75,7 +75,7 @@
                     {
                         <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
                     }
-                    <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
                 </div>
             </div>
         </div>
@@ -89,6 +89,11 @@
         <partial name="_ValidationScriptsPartial"/>
     }
     <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat'
+    });
     function ValidateInput() {
       if(document.getElementById("uploadBox").value == "") {
         Swal.fire({
