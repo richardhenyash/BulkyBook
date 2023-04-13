@@ -18,8 +18,6 @@
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.Connections.Abstractions.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.CookiePolicy.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.Cors.dll
-/Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.Cryptography.Internal.dll
-/Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.DataProtection.Abstractions.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.DataProtection.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -104,8 +102,6 @@
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Hosting.Abstractions.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Hosting.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Http.dll
-/Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Identity.Core.dll
-/Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Identity.Stores.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Localization.Abstractions.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Localization.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net6.0/refs/Microsoft.Extensions.Logging.Configuration.dll
