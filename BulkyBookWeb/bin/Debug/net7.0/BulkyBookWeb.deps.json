@@ -41,6 +41,7 @@
           "Microsoft.EntityFrameworkCore.Design": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.5",
+          "Microsoft.Extensions.Identity.Stores": "7.0.5",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.6",
           "Models": "1.0.0",
           "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.0",
@@ -3331,6 +3332,7 @@
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
+          "Microsoft.Extensions.Identity.Stores": "7.0.5",
           "Models": "1.0.0",
           "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.0"
         },
@@ -3345,6 +3347,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
+          "Microsoft.Extensions.Identity.Stores": "7.0.5",
           "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.0"
         },
         "runtime": {
@@ -3358,6 +3361,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
+          "Microsoft.Extensions.Identity.Stores": "7.0.5",
           "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.0"
         },
         "runtime": {
