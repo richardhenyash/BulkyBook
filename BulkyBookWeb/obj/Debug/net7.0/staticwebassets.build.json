@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gPOZAvsYbM/nZdU/eE+qiOERvx3xpOSt2mLeaPuTO6w=",
+  "Hash": "bRcXAKLfDpeMDC4dUPVPqlXkUdtIKHINusmrbkI6hZM=",
   "Source": "BulkyBookWeb",
   "BasePath": "_content/BulkyBookWeb",
   "Mode": "Default",
@@ -1222,6 +1222,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/products/d2aad734-5495-4eff-83eb-d0a9a6728b0b.jpg"
+    },
+    {
+      "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/js/company.js",
+      "SourceId": "BulkyBookWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/",
+      "BasePath": "_content/BulkyBookWeb",
+      "RelativePath": "js/company.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/company.js"
     },
     {
       "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/js/product.js",

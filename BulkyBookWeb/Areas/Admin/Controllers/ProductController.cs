@@ -1,8 +1,6 @@
 using BulkyBook.DataAccess.Repository.IRepository;
-using Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Query;
 using Models.ViewModels;
 
 namespace BulkyBookWeb.Controllers;
@@ -82,13 +80,14 @@ public class ProductController : Controller
             if (obj.Product.Id == 0)
             {
                 _unitOfWork.Product.Add(obj.Product);
+                TempData["success"] = "Product created successfully";
             }
             else
             {
                 _unitOfWork.Product.Update(obj.Product);
+                TempData["success"] = "Product updated successfully";
             }
             _unitOfWork.Save();
-            TempData["success"] = "Product saved successfully";
             return RedirectToAction("Index");
         }
         return View(obj);
