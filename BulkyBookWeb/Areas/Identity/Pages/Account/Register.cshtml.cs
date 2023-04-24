@@ -15,7 +15,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Models;
@@ -110,6 +112,11 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
             public string? State { get; set; }
             public string? PostalCode { get; set; }
             public string? PhoneNumber { get; set; }
+            
+            public string? Role { get; set; }
+            
+            [ValidateNever]
+            public IEnumerable<SelectListItem> RoleList { get; set;  }
         }
 
 
@@ -124,6 +131,15 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
             }
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            Input = new InputModel()
+            {
+                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                {
+                    Text = i,
+                    Value = i
+                })
+
+            };
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -149,6 +165,15 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    if (Input.Role == null)
+                    {
+                        await _userManager.AddToRoleAsync(user, StaticDetails.RoleUserIndividual);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, Input.Role);
+                    }
+                    
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
