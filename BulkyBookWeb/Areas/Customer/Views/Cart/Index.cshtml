@@ -11,21 +11,22 @@
                         Shopping Cart
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn btn-outline-info btn-sm">Continue Shopping</a>
+                        <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-outline-info btn-sm">Continue Shopping</a>
                     </div>
                 </div>
                 <div class="card-body">
+                    @foreach(var item in Model.ListCart){
                     <div class="row">
                         <div class="d-none d-lg-block col-lg-1 text-center py-2">
-                            <img src="https://via.placeholder.com/150" class="rounded" width="100%"/>
+                            <img src="@item.Product.ImageUrl" src="https://via.placeholder.com/150" class="rounded" width="100%"/>
                         </div>
                         <div class="col-12 text-sm-center col-lg-6 text-lg-left">
-                            <h5><strong>--TITLE--</strong></h5>
-                            <p><small>--DESCRIPTION--</small></p>
+                            <h5><strong>"@item.Product.Title"</strong></h5>
+                            <p><small>"@Html.Raw(item.Product.Description)"</small></p>
                         </div>
                         <div class="col-12 text-sm-center col-lg-5 text-lg-right row">
                             <div class="col-4 text-md-right" style="padding-top:5px;">
-                                <h6><strong>--Price --<span class="text-muted">x</span> --Count-- </strong></h6>
+                                <h6><strong>"@item.Price.ToString("c")"<span class="text-muted">&nbsp;x&nbsp;</span>@item.Count</strong></h6>
                             </div>
                             <div class="col-6 col-sm-4 col-lg-6">
                                 <div class="float-right mx-1">
@@ -53,7 +54,7 @@
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between bg-light">
                                     <span class="text-info"> Total (USD)</span>
-                                    <strong class="text-info">$ <span id="txtOrderTotal">--TOTAL--</span></strong>
+                                    <strong class="text-info">$ <span id="txtOrderTotal">@Model.CartTotal.ToString("c")</span></strong>
                                 </li>
                             </ul>
                         </div>

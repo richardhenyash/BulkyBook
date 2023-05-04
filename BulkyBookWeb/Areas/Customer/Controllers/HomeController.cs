@@ -42,20 +42,19 @@ public class HomeController : Controller
         var claimsIdentity = (ClaimsIdentity)User.Identity;
         var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
         shoppingCart.ApplicationUserId = claim.Value;
-        ShoppingCart cartFromDb = _unitOfWork.ShoppingCart
-            .GetFirstOrDefault(u => u.ApplicationUserId == claim.Value 
-                                    && u.ProductId == shoppingCart.ProductId);
 
-        if (cartFromDb == null)
-        {
+        ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.GetFirstOrDefault(
+            u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
+
+        if (cartFromDb == null) {
             _unitOfWork.ShoppingCart.Add(shoppingCart);
+            _unitOfWork.Save();
         }
         else
         {
             _unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
+            _unitOfWork.Save();
         }
-        _unitOfWork.Save();
-        
         return RedirectToAction(nameof(Index));
     }
     public IActionResult Privacy()
