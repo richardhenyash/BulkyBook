@@ -2,6 +2,7 @@
 using BulkyBook.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using Models.ViewModels;
 
 namespace BulkyBookWeb.Controllers;
@@ -27,36 +28,48 @@ public class CartController : Controller
         ShoppingCartVm = new ShoppingCartVm()
         {
             ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value,
-                includeProperties: "Product")
+                includeProperties: "Product"),
+            OrderHeader = new OrderHeader()
         };
         foreach (var cart in ShoppingCartVm.ListCart)
         {
-            cart.Price = getPriceBasedOnQuantity(cart.Count, cart.Product.Price, cart.Product.Price50,
+            cart.Price = GetPriceBasedOnQuantity(cart.Count, cart.Product.Price, cart.Product.Price50,
                 cart.Product.Price100);
-            ShoppingCartVm.CartTotal += (cart.Price * cart.Count);
+            ShoppingCartVm.OrderHeader.OrderTotal += (cart.Price * cart.Count);
         }
         return View(ShoppingCartVm);
     }
     
     public IActionResult Summary()
     {
-        // var claimsIdentity = (ClaimsIdentity)User.Identity;
-        // var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-        // ShoppingCartVm = new ShoppingCartVm()
-        // {
-        //     ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value,
-        //         includeProperties: "Product")
-        // };
-        // foreach (var cart in ShoppingCartVm.ListCart)
-        // {
-        //     cart.Price = getPriceBasedOnQuantity(cart.Count, cart.Product.Price, cart.Product.Price50,
-        //         cart.Product.Price100);
-        //     ShoppingCartVm.CartTotal += (cart.Price * cart.Count);
-        // }
-        return View();
-    }
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-    private double getPriceBasedOnQuantity(double quantity, double price, double price50, double price100)
+        ShoppingCartVm = new ShoppingCartVm()
+        {
+            ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value,
+                includeProperties: "Product"),
+            OrderHeader= new()
+        };
+        ShoppingCartVm.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(
+            u => u.Id == claim.Value);
+
+        ShoppingCartVm.OrderHeader.Name = ShoppingCartVm.OrderHeader.ApplicationUser.Name;
+        ShoppingCartVm.OrderHeader.PhoneNumber = ShoppingCartVm.OrderHeader.ApplicationUser.PhoneNumber;
+        ShoppingCartVm.OrderHeader.StreetAddress = ShoppingCartVm.OrderHeader.ApplicationUser.StreetAddress;
+        ShoppingCartVm.OrderHeader.City = ShoppingCartVm.OrderHeader.ApplicationUser.City;
+        ShoppingCartVm.OrderHeader.State = ShoppingCartVm.OrderHeader.ApplicationUser.State;
+        ShoppingCartVm.OrderHeader.PostalCode = ShoppingCartVm.OrderHeader.ApplicationUser.PostalCode;
+
+        foreach (var cart in ShoppingCartVm.ListCart)
+        {
+            cart.Price = GetPriceBasedOnQuantity(cart.Count, cart.Product.Price,
+                cart.Product.Price50, cart.Product.Price100);
+            ShoppingCartVm.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+        }
+        return View(ShoppingCartVm);
+    }
+    private double GetPriceBasedOnQuantity(double quantity, double price, double price50, double price100)
     {
         if (quantity <= 50)
         {
