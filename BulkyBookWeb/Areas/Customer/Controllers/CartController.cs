@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.ViewModels;
+using Utility;
 
 namespace BulkyBookWeb.Controllers;
 
@@ -12,6 +13,7 @@ namespace BulkyBookWeb.Controllers;
 public class CartController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
+    [BindProperty]
     public ShoppingCartVm ShoppingCartVm { get; set; }
 
     public int OrderTotal { get; set; }
@@ -68,6 +70,48 @@ public class CartController : Controller
             ShoppingCartVm.OrderHeader.OrderTotal += (cart.Price * cart.Count);
         }
         return View(ShoppingCartVm);
+    }
+    
+    [HttpPost]
+    [ActionName("Summary")]
+    [ValidateAntiForgeryToken]
+    public IActionResult SummaryPOST()
+    {
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+        ShoppingCartVm.ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value,
+            includeProperties: "Product");
+
+        ShoppingCartVm.OrderHeader.PaymentStatus = StaticDetails.PaymentStatusPending;
+        ShoppingCartVm.OrderHeader.OrderStatus = StaticDetails.StatusPending;
+        ShoppingCartVm.OrderHeader.OrderDate = DateTime.Now;
+        ShoppingCartVm.OrderHeader.ApplicationUserId = claim.Value;
+        
+        foreach (var cart in ShoppingCartVm.ListCart)
+        {
+            cart.Price = GetPriceBasedOnQuantity(cart.Count, cart.Product.Price,
+                cart.Product.Price50, cart.Product.Price100);
+            ShoppingCartVm.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+        }
+        
+        _unitOfWork.OrderHeader.Add(ShoppingCartVm.OrderHeader);
+        _unitOfWork.Save();
+        foreach (var cart in ShoppingCartVm.ListCart)
+        {
+            OrderDetail orderDetail = new()
+            {
+                ProductId = cart.ProductId,
+                OrderId = ShoppingCartVm.OrderHeader.Id,
+                Price = cart.Price,
+                Count = cart.Count
+            };
+            _unitOfWork.OrderDetail.Add(orderDetail);
+            _unitOfWork.Save();
+        }
+        _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartVm.ListCart);
+        _unitOfWork.Save();
+        return RedirectToAction("Index", "Home");
     }
     private double GetPriceBasedOnQuantity(double quantity, double price, double price50, double price100)
     {
