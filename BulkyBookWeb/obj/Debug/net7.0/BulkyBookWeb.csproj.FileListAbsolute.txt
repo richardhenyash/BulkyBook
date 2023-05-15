@@ -609,3 +609,4 @@
 /Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/obj/Debug/net7.0/BulkyBookWeb.pdb
 /Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/obj/Debug/net7.0/BulkyBookWeb.genruntimeconfig.cache
 /Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/obj/Debug/net7.0/ref/BulkyBookWeb.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/Stripe.net.dll

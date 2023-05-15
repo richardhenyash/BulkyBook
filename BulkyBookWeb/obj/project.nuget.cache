@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CuCEJDqvNoUKQtvafq3LtM2DfgWdkZNbvyG3DugtIURqakuJjz+tD3SCQbynmOwGEGVs0IhszIVh3RxxS76HJA==",
+  "dgSpecHash": "gUHCHzF3swiGrseD+f2TveRwrW8J+tCBR009C2PPool2LQ3T2Mk6Gzw3dIY8HB5SaBbamoPPLoHkrvfJcD+zxg==",
   "success": true,
   "projectFilePath": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/BulkyBookWeb.csproj",
   "expectedPackageFiles": [
@@ -138,6 +138,7 @@
     "/Users/richardash/.nuget/packages/runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/richardash/.nuget/packages/runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/Users/richardash/.nuget/packages/runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "/Users/richardash/.nuget/packages/stripe.net/41.16.0/stripe.net.41.16.0.nupkg.sha512",
     "/Users/richardash/.nuget/packages/system.appcontext/4.3.0/system.appcontext.4.3.0.nupkg.sha512",
     "/Users/richardash/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/Users/richardash/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
