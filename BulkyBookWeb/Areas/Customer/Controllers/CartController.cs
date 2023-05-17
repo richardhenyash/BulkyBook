@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.ViewModels;
+using Stripe.Checkout;
 using Utility;
 
 namespace BulkyBookWeb.Controllers;
@@ -109,9 +110,51 @@ public class CartController : Controller
             _unitOfWork.OrderDetail.Add(orderDetail);
             _unitOfWork.Save();
         }
-        _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartVm.ListCart);
-        _unitOfWork.Save();
-        return RedirectToAction("Index", "Home");
+        
+        //Stripe settings
+        
+        var domain = "https://localhost:5001/";
+        var options = new SessionCreateOptions
+        {
+            PaymentMethodTypes = new List<string>
+            {
+                "card",
+            },
+            LineItems = new List<SessionLineItemOptions>(),
+            Mode = "payment",
+            SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={ShoppingCartVm.OrderHeader.Id}",
+            CancelUrl = domain + $"customer/cart/index",
+        };
+
+        foreach (var item in ShoppingCartVm.ListCart)
+        {
+            var sessionLineItem = new SessionLineItemOptions
+            {
+                PriceData = new SessionLineItemPriceDataOptions
+                {
+                    // Unit amount in cents
+                    UnitAmount = (long)(item.Price * 100), //20.00 -> 2000
+                    Currency = "usd",
+                    ProductData = new SessionLineItemPriceDataProductDataOptions
+                    {
+                        Name = item.Product.Title
+                    },
+                },
+                Quantity = item.Count,
+            };
+            options.LineItems.Add(sessionLineItem);
+        }
+
+        var service = new SessionService();
+        Session session = service.Create(options);
+        // _unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVm.OrderHeader.Id, session.Id, session.PaymentIntentId);
+        // _unitOfWork.Save();
+        Response.Headers.Add("Location", session.Url);
+        return new StatusCodeResult(303);
+
+        // _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartVm.ListCart);
+        // _unitOfWork.Save();
+        // return RedirectToAction("Index", "Home");
     }
     private double GetPriceBasedOnQuantity(double quantity, double price, double price50, double price100)
     {
