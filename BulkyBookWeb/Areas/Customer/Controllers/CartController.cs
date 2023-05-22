@@ -147,8 +147,8 @@ public class CartController : Controller
 
         var service = new SessionService();
         Session session = service.Create(options);
-        // _unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVm.OrderHeader.Id, session.Id, session.PaymentIntentId);
-        // _unitOfWork.Save();
+        _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartVm.OrderHeader.Id, session.Id, session.PaymentIntentId);
+        _unitOfWork.Save();
         Response.Headers.Add("Location", session.Url);
         return new StatusCodeResult(303);
 
@@ -170,6 +170,11 @@ public class CartController : Controller
         return price100;
     }
 
+    public IActionResult OrderConfirmation(int id)
+    {
+        OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault((u => u.Id == id));
+        
+    }
     public IActionResult Plus(int cartId)
     {
         var cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(u => u.Id == cartId);
@@ -198,4 +203,5 @@ public class CartController : Controller
         _unitOfWork.Save();
         return RedirectToAction(nameof(Index));
     }
+    
 }
