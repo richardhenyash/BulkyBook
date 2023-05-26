@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bRcXAKLfDpeMDC4dUPVPqlXkUdtIKHINusmrbkI6hZM=",
+  "Hash": "KE4OosQ8vQs0SSynasgH2XB38fVGE65LjeNsHafX9RE=",
   "Source": "BulkyBookWeb",
   "BasePath": "_content/BulkyBookWeb",
   "Mode": "Default",
@@ -1154,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/.DS_Store"
+    },
+    {
+      "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/lawn_leaf.jpg",
+      "SourceId": "BulkyBookWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/",
+      "BasePath": "_content/BulkyBookWeb",
+      "RelativePath": "images/lawn_leaf.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/lawn_leaf.jpg"
     },
     {
       "Identity": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/products/78b3fae3-87a1-4d13-95c4-33333ed5e536.jpg",

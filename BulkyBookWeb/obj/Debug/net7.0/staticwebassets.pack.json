@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets/images/.DS_Store"
     },
     {
+      "Id": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/lawn_leaf.jpg",
+      "PackagePath": "staticwebassets/images/lawn_leaf.jpg"
+    },
+    {
       "Id": "/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/wwwroot/images/products/78b3fae3-87a1-4d13-95c4-33333ed5e536.jpg",
       "PackagePath": "staticwebassets/images/products/78b3fae3-87a1-4d13-95c4-33333ed5e536.jpg"
     },
