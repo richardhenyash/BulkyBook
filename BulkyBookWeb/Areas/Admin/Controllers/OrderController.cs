@@ -57,7 +57,7 @@ public class OrderController : Controller
                 orderHeaders = orderHeaders.Where(u => u.PaymentStatus == StaticDetails.PaymentStatusDelayedPayment);
                 break;
             case "inprocess":
-                orderHeaders = orderHeaders.Where(u => u.OrderStatus == StaticDetails.StatusInProgress);
+                orderHeaders = orderHeaders.Where(u => u.OrderStatus == StaticDetails.StatusInProcess);
                 break;
             case "completed":
                 orderHeaders = orderHeaders.Where(u => u.OrderStatus == StaticDetails.StatusShipped);
