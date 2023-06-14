@@ -35,6 +35,30 @@ public class OrderController : Controller
         };
         return View(OrderVm);
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult UpdateOrderDetail()
+    {
+        var orderHeaderFromDb = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == OrderVm.OrderHeader.Id, tracked: false);
+        orderHeaderFromDb.Name = OrderVm.OrderHeader.Name;
+        orderHeaderFromDb.PhoneNumber = OrderVm.OrderHeader.PhoneNumber;
+        orderHeaderFromDb.StreetAddress = OrderVm.OrderHeader.StreetAddress;
+        orderHeaderFromDb.City = OrderVm.OrderHeader.City;
+        orderHeaderFromDb.State = OrderVm.OrderHeader.State;
+        orderHeaderFromDb.PostalCode = OrderVm.OrderHeader.PostalCode;
+        if (OrderVm.OrderHeader.Carrier != null)
+        {
+            orderHeaderFromDb.Carrier = OrderVm.OrderHeader.Carrier;
+        }
+        if (OrderVm.OrderHeader.TrackingNumber != null)
+        {
+            orderHeaderFromDb.TrackingNumber = OrderVm.OrderHeader.TrackingNumber;
+        }
+        _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+        _unitOfWork.Save();
+        TempData["Success"] = "Order details Updated Successfully.";
+        return RedirectToAction("Details", "Order", new { orderId = orderHeaderFromDb.Id });
+    }
     
     #region API CALLS
     [HttpGet]
