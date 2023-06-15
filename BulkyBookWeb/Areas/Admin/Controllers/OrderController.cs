@@ -60,6 +60,31 @@ public class OrderController : Controller
         return RedirectToAction("Details", "Order", new { orderId = orderHeaderFromDb.Id });
     }
     
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult StartProcessing()
+    {
+        _unitOfWork.OrderHeader.UpdateStatus(OrderVm.OrderHeader.Id, StaticDetails.StatusInProcess);
+        _unitOfWork.Save();
+        TempData["Success"] = "Order Status Updated Successfully.";
+        return RedirectToAction("Details", "Order", new { orderId = OrderVm.OrderHeader.Id });
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult ShipOrder()
+    {
+        var orderHeaderFromDb = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == OrderVm.OrderHeader.Id, tracked: false);
+        orderHeaderFromDb.TrackingNumber = OrderVm.OrderHeader.TrackingNumber;
+        orderHeaderFromDb.Carrier = OrderVm.OrderHeader.Carrier;
+        orderHeaderFromDb.OrderStatus = StaticDetails.StatusShipped;
+        orderHeaderFromDb.ShippingDate = DateTime.Now;
+        _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+        _unitOfWork.Save();
+        TempData["Success"] = "Order Shipped Successfully.";
+        return RedirectToAction("Details", "Order", new { orderId = OrderVm.OrderHeader.Id });
+    }
+    
     #region API CALLS
     [HttpGet]
     public IActionResult GetAll(string status)

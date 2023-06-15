@@ -21,9 +21,13 @@ public class OrderHeaderRepository : Repository<OrderHeader>, IOrderHeaderReposi
     public void UpdateStatus(int id, string orderStatus, string? paymentStatus=null)
     {
         var orderFromDb = _db.OrderHeaders.FirstOrDefault(u => u.Id == id);
-        if (paymentStatus != null)
+        if (orderFromDb != null)
         {
-            orderFromDb.PaymentStatus = paymentStatus;
+            orderFromDb.OrderStatus = orderStatus;
+            if (paymentStatus != null)
+            {
+                orderFromDb.PaymentStatus = paymentStatus;
+            }
         }
     }
     public void UpdateStripePaymentId(int id, string sessionId, string? paymentIntentId)

@@ -16,32 +16,40 @@ public class Repository<T> : IRepository<T> where T : class
         _db = db;
         dbSet = _db.Set<T>();
     }
-    
     public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true)
     {
-        IQueryable<T> query;
-
         if (tracked)
         {
-           query = dbSet;
+            IQueryable<T> query = dbSet;
+
+            query = query.Where(filter);
+            if (includeProperties != null)
+            {
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+            return query.FirstOrDefault();
         }
         else
         {
-            query = dbSet.AsNoTracking();
-        }
-        
-        query = query.Where(filter);
-        if (includeProperties != null)
-        {
-            foreach (var includeProp in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            IQueryable<T> query = dbSet.AsNoTracking();
+
+            query = query.Where(filter);
+            if (includeProperties != null)
             {
-                query = query.Include(includeProp);
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
             }
+            return query.FirstOrDefault();
         }
-        return query.FirstOrDefault();
+            
     }
-    // includeProp - "Category"
-    // includeProp - "Category,CoverType"
+    // includeProperties - "Category"
+    // includeProperties - "Category,CoverType"
     public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
     {
         IQueryable<T> query = dbSet;
