@@ -2,8 +2,10 @@ using System.Security.Claims;
 using BulkyBook.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Models;
 using Models.ViewModels;
+using Stripe;
 using Utility;
 
 namespace BulkyBookWeb.Controllers;
@@ -36,6 +38,7 @@ public class OrderController : Controller
         return View(OrderVm);
     }
     [HttpPost]
+    [Authorize(Roles = StaticDetails.RoleAdmin + "," + StaticDetails.RoleEmployee)]
     [ValidateAntiForgeryToken]
     public IActionResult UpdateOrderDetail()
     {
@@ -61,6 +64,7 @@ public class OrderController : Controller
     }
     
     [HttpPost]
+    [Authorize(Roles = StaticDetails.RoleAdmin + "," + StaticDetails.RoleEmployee)]
     [ValidateAntiForgeryToken]
     public IActionResult StartProcessing()
     {
@@ -71,6 +75,7 @@ public class OrderController : Controller
     }
     
     [HttpPost]
+    [Authorize(Roles = StaticDetails.RoleAdmin + "," + StaticDetails.RoleEmployee)]
     [ValidateAntiForgeryToken]
     public IActionResult ShipOrder()
     {
@@ -79,9 +84,39 @@ public class OrderController : Controller
         orderHeaderFromDb.Carrier = OrderVm.OrderHeader.Carrier;
         orderHeaderFromDb.OrderStatus = StaticDetails.StatusShipped;
         orderHeaderFromDb.ShippingDate = DateTime.Now;
+        if (orderHeaderFromDb.PaymentStatus == StaticDetails.PaymentStatusDelayedPayment)
+        {
+            orderHeaderFromDb.PaymentDueDate = DateTime.Now.AddDays(30);
+        }
         _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
         _unitOfWork.Save();
         TempData["Success"] = "Order Shipped Successfully.";
+        return RedirectToAction("Details", "Order", new { orderId = OrderVm.OrderHeader.Id });
+    }
+    
+    [HttpPost]
+    [Authorize(Roles = StaticDetails.RoleAdmin + "," + StaticDetails.RoleEmployee)]
+    [ValidateAntiForgeryToken]
+    public IActionResult CancelOrder()
+    {
+        var orderHeaderFromDb = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == OrderVm.OrderHeader.Id, tracked: false);
+        if (orderHeaderFromDb.PaymentStatus == StaticDetails.PaymentStatusApproved)
+        {
+            var options = new RefundCreateOptions
+            {
+                Reason = RefundReasons.RequestedByCustomer,
+                PaymentIntent = orderHeaderFromDb.PaymentIntentId
+            };
+            var service = new RefundService();
+            Refund refund = service.Create(options);
+            _unitOfWork.OrderHeader.UpdateStatus(orderHeaderFromDb.Id, StaticDetails.StatusCancelled, StaticDetails.StatusRefunded);
+        }
+        else
+        {
+            _unitOfWork.OrderHeader.UpdateStatus(orderHeaderFromDb.Id, StaticDetails.StatusCancelled, StaticDetails.StatusRefunded);
+        }
+        _unitOfWork.Save();
+        TempData["Success"] = "Order Cancelled Successfully.";
         return RedirectToAction("Details", "Order", new { orderId = OrderVm.OrderHeader.Id });
     }
     

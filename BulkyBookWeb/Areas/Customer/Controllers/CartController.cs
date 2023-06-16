@@ -187,6 +187,7 @@ public class CartController : Controller
             // check the stripe status
             if (session.PaymentStatus.ToLower() == "paid")
             {
+                _unitOfWork.OrderHeader.UpdateStripePaymentId(id, orderHeader.SessionId, session.PaymentIntentId);
                 _unitOfWork.OrderHeader.UpdateStatus(id, StaticDetails.StatusApproved, StaticDetails.PaymentStatusApproved);
                 _unitOfWork.Save();
             }
