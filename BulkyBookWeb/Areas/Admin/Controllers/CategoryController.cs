@@ -1,9 +1,12 @@
 using BulkyBook.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Models;
 using Microsoft.AspNetCore.Mvc;
+using Utility;
 
 namespace BulkyBookWeb.Controllers;
 [Area("Admin")]
+[Authorize(Roles = StaticDetails.RoleAdmin)]
 
 public class CategoryController : Controller
 {
