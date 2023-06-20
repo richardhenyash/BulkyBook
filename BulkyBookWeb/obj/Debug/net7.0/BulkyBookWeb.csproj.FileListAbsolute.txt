@@ -610,3 +610,8 @@
 /Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/obj/Debug/net7.0/BulkyBookWeb.genruntimeconfig.cache
 /Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/obj/Debug/net7.0/ref/BulkyBookWeb.dll
 /Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/Stripe.net.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/BouncyCastle.Cryptography.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/MailKit.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/MimeKit.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/System.Security.Cryptography.Pkcs.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/BulkyBookWeb/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll

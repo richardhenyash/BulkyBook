@@ -324,6 +324,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -351,6 +355,10 @@
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             },
             "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
