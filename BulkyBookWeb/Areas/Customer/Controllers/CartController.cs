@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using BulkyBook.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.ViewModels;
@@ -14,14 +15,17 @@ namespace BulkyBookWeb.Controllers;
 public class CartController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IEmailSender _emailSender;
+    
     [BindProperty]
     public ShoppingCartVm ShoppingCartVm { get; set; }
 
     public int OrderTotal { get; set; }
 
-    public CartController(IUnitOfWork unitOfWork)
+    public CartController(IUnitOfWork unitOfWork, IEmailSender emailSender)
     {
         _unitOfWork = unitOfWork;
+        _emailSender = emailSender;
     }
 
     public IActionResult Index()
@@ -179,7 +183,7 @@ public class CartController : Controller
 
     public IActionResult OrderConfirmation(int id)
     {
-        OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == id);
+        OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == id, includeProperties:"ApplicationUser");
         if (orderHeader.PaymentStatus != StaticDetails.PaymentStatusDelayedPayment)
         {
             var service = new SessionService();
@@ -192,7 +196,9 @@ public class CartController : Controller
                 _unitOfWork.Save();
             }
         }
-
+        
+        _emailSender.SendEmailAsync(orderHeader.ApplicationUser.Email, "New Order - Bulky Book",
+            "<p>New order created. </p>");
         List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
             .GetAll(u => u.ApplicationUserId == orderHeader.ApplicationUserId).ToList();
         _unitOfWork.ShoppingCart.RemoveRange(shoppingCarts);
