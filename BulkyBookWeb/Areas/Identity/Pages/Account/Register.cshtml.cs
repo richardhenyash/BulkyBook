@@ -205,11 +205,15 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
+                    if(User.IsInRole(StaticDetails.RoleAdmin))
+                    {
+                        TempData["success"] = "New User Created Successfully";
+                    }
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
                     }
+                    return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {
