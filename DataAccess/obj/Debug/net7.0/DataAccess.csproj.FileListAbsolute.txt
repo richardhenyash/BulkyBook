@@ -311,3 +311,5 @@
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/obj/Debug/net7.0/DataAccess.pdb
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/obj/Debug/net7.0/DataAccess.genruntimeconfig.cache
 /Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net7.0/Utility.dll
+/Users/richardash/Dev/BulkyBook/BulkyBook/DataAccess/bin/Debug/net7.0/Utility.pdb

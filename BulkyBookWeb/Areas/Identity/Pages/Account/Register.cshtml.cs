@@ -129,13 +129,13 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!_roleManager.RoleExistsAsync(StaticDetails.RoleAdmin).GetAwaiter().GetResult())
-            {
-                _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleAdmin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleEmployee)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleUserIndividual)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleUserCompany)).GetAwaiter().GetResult();
-            }
+            // if (!_roleManager.RoleExistsAsync(StaticDetails.RoleAdmin).GetAwaiter().GetResult())
+            // {
+            //     _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleAdmin)).GetAwaiter().GetResult();
+            //     _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleEmployee)).GetAwaiter().GetResult();
+            //     _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleUserIndividual)).GetAwaiter().GetResult();
+            //     _roleManager.CreateAsync(new IdentityRole(StaticDetails.RoleUserCompany)).GetAwaiter().GetResult();
+            // }
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             Input = new InputModel()

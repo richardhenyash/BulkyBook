@@ -136,6 +136,9 @@
             "projectReferences": {
               "/Users/richardash/Dev/BulkyBook/Models/Models.csproj": {
                 "projectPath": "/Users/richardash/Dev/BulkyBook/Models/Models.csproj"
+              },
+              "/Users/richardash/Dev/BulkyBook/Utility/Utility.csproj": {
+                "projectPath": "/Users/richardash/Dev/BulkyBook/Utility/Utility.csproj"
               }
             }
           }

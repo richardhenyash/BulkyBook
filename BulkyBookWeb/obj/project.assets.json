@@ -4427,7 +4427,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Microsoft.Extensions.Identity.Stores": "7.0.5",
           "Models": "1.0.0",
-          "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.0"
+          "MyTested.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.0",
+          "Utility": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DataAccess.dll": {}
